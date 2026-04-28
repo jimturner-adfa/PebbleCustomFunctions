@@ -1,0 +1,40 @@
+{
+    "name": "Build Extensions",
+    "description": "Builds extensions.jar",
+    "tooltipTag": "template.custom.activity",
+    "version": "0.1",
+    "parameters": {
+        "required": {
+            "appName": {identifier: "APP_NAME"},
+            "packageName":  {identifier: "PACKAGE_NAME"},
+            "saveLocation":  {identifier: "SAVE_LOCATION"}
+        },
+        "optional": {
+            "minsdk":  {identifier: "MIN_SDK"}
+        },
+	"user": {
+	    "text":
+            [
+                {"label":"Author", "identifier":"PLUGIN_AUTHOR", "default":"Author"},
+                {"label":"Description", "identifier":"PLUGIN_DESC", "default":"Plugin description"} 
+            ],
+	    "checkbox":
+	    [
+		{"label":"Include Reverse Function", "identifier":"REVERSE_CODE", "default": true},
+		{"label":"Include DB Query Function", "identifier":"QUERYDB_CODE", "default": true},
+		{"label":"Include URL Query Function", "identifier":"QUERYURL_CODE", "default": true},
+		{"label":"Include Hello User Function", "identifier":"HELLOUSER_CODE", "default": true}
+	    ]
+	}
+    },
+    "system": {
+      "agpVersion": { "identifier": "AGP_VERSION" },
+      "kotlinVersion": { "identifier": "KOTLIN_VERSION" },
+      "gradleVersion": { "identifier": "GRADLE_VERSION" },
+      "compileSdk": { "identifier": "COMPILE_SDK" },
+      "targetSdk": { "identifier": "TARGET_SDK" },
+      "javaSourceCompat": { "identifier": "JAVA_SOURCE_COMPAT" },
+      "javaTargetCompat": { "identifier": "JAVA_TARGET_COMPAT" },
+      "javaTarget": { "identifier": "JAVA_TARGET" }
+    }
+}

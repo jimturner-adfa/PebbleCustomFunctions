@@ -1,0 +1,25 @@
+package ${{PACKAGE_NAME}}
+
+import io.pebbletemplates.pebble.extension.AbstractExtension
+import io.pebbletemplates.pebble.extension.Function
+
+class BasicExtensions(
+) : AbstractExtension() {
+
+    override fun getFunctions(): Map<String, Function> =
+        mapOf(
+		${% if REVERSE_CODE %}
+		    "reverse" to ReverseFunction(),
+		${% endif %}
+		${% if QUERYDB_CODE %}
+		    "queryDB" to QueryDbFunction(),
+		${% endif %}
+		${% if QUERYURL_CODE %}
+		    "queryURL" to QueryURLFunction(),
+		${% endif %}
+		${% if HELLOUSER_CODE %}
+		    "helloUser" to HelloUserFunction()
+		${% endif %}
+        )
+}
+
