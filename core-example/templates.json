@@ -1,6 +1,7 @@
 {
   "templates": [
-      { "path": "PCFExampleActivity" }
+      { "path": "PCFExampleActivity" },
+      { "path": "PCFSimpleActivity" }
   ]
 }
 

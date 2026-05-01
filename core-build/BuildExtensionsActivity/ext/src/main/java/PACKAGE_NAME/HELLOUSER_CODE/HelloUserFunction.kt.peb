@@ -7,7 +7,7 @@ import io.pebbletemplates.pebble.template.EvaluationContext
 class HelloUserFunction : Function {
 
     override fun getArgumentNames(): List<String> =
-        listOf("name")
+        listOf()
 
     override fun execute(
         args: MutableMap<String, Any?>,
@@ -15,7 +15,8 @@ class HelloUserFunction : Function {
         context: EvaluationContext,
         lineNumber: Int
     ): Any? {
-        val input = args["name"]?.toString() ?: return ""
-        return input
+        val studentName: String? = context.getVariable("STUDENT_NAME").toString()
+        val name =  studentName ?: "Whoever You Are"
+        return "Hello ${name}"
     }
 }
