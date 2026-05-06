@@ -17,7 +17,6 @@ class PageViewModel : ViewModel() {
 	       """
                ${{ queryURL("http://localhost:6174/PUCC/api/v1.0/student/0663864") | raw }}
                """.trimIndent()
-             4 -> "Hello ${{STUDENT_NAME}}"
              else -> "Error"
    	}  
 }    

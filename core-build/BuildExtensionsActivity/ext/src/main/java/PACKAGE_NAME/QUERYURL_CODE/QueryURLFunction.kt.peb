@@ -5,7 +5,6 @@ import io.pebbletemplates.pebble.template.EvaluationContext
 import io.pebbletemplates.pebble.template.PebbleTemplate
 import okhttp3.OkHttpClient
 import okhttp3.Request
-import java.io.IOException
 
 class QueryURLFunction() : Function {
     private val client = OkHttpClient()
@@ -28,13 +27,13 @@ class QueryURLFunction() : Function {
         return try {
             client.newCall(request).execute().use { response ->
                 if(!response.isSuccessful) {
-                    "HTTP Error: ${response.code}"
+                    "Error: HTTP Response code: ${response.code}\n\tReason:  ${response.message}"
                 } else {
                     response.body?.string()
                 }
             }
         } catch(e : IOException) {
-            "Network Error - ${e.message}"
+            "Error: IOException: ${e.message}"
         }
 
 	return ""

@@ -27,9 +27,6 @@ public class PageViewModel extends ViewModel {
 		     ${{ queryURL("http://localhost:6174/PUCC/api/v1.0/student/0663864") | raw }}
 		     """;
 		break;
-		case 4:
-		     result  = " ${{STUDENT_NAME}} ";
-		break;
 		default:
 	             result = "Error";
 		     break;
