@@ -16,14 +16,12 @@
 	"user": {
 	    "text":
 	    [
-		{"label":"StudentId", "identifier":"STUDENT_ID", "default":"0663864"},
+		{"label":"StudentId", "identifier":"STUDENT_ID", "default":"1"},
 		{"label":"StudentName", "identifier":"STUDENT_NAME", "default":"Your Name Here"}
 	    ],
 	    "checkbox":
 	            [
-                {"label":"Include Reverse Sample Code","identifier":"REVERSE_SAMPLE", "default": true}, 
-                {"label":"Include QueryDB Sample Code","identifier":"QUERYDB_SAMPLE", "default": true}, 
-                {"label":"Include QueryURL Sample Code","identifier":"QUERYURL_SAMPLE", "default": true} 
+                {"label":"Include Sample Code","identifier":"EXAMPLE_CODE", "default": true} 
             ]
         }
     },

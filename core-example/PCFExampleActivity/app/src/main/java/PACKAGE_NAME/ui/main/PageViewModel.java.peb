@@ -8,15 +8,19 @@ import androidx.lifecycle.ViewModel;
 
 public class PageViewModel extends ViewModel {
 
+    private String  errorString = "Error:";
+    private String  logFilename = "error_log.txt";
+    private String  saveDir = "${{SAVE_LOCATION}}";
     private MutableLiveData<Integer> mIndex = new MutableLiveData<>();
     private LiveData<String> mText = Transformations.map(mIndex, new Function<Integer, String>() {
         @Override
         public String apply(Integer input) {
 	    String result = "";
+	    ${% if EXAMPLE_CODE %}
 	    String jsonString = "";
 	    switch(input) {
 	    	case 1:
-            	     result = "Hello ${{STUDENT_NAME}}";  //"${{ reverse ("Hello world from section: reverse") }}";
+            	     result = "${{ reverse ("Hello world from section: reverse") }}";
 		break;
 		case 2:
 		     result = "${{ queryDB() }}";
@@ -27,10 +31,21 @@ public class PageViewModel extends ViewModel {
 		     ${{ queryURL("http://localhost:6174/PUCC/api/v1.0/student/0663864") | raw }}
 		     """;
 		break;
+		case 4:
+		     result = "Hello ${{STUDENT_NAME}}";
+		     break;
 		default:
-	             result = "Error";
+	             result = errorString + " Internal Error";
 		     break;
 	    }
+	    if(result.trim().startsWith(errorString)) {
+		    saveDir = saveDir.replace("/storage/emulated/0", "/sdcard");
+		    result = "An error occurred as follows:\n" +
+            	    result + 
+            	    "\nIt will be logged in the file\n\t" +
+            	    saveDir +"/" + logFilename;
+		}
+	    ${% endif %}
 	    return result;
 	}
     });

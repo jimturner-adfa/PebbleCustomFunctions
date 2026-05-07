@@ -20,10 +20,7 @@
             ],
 	    "checkbox":
 	    [
-		{"label":"Include Reverse Function", "identifier":"REVERSE_CODE", "default": true},
-		{"label":"Include DB Query Function", "identifier":"QUERYDB_CODE", "default": true},
-		{"label":"Include URL Query Function", "identifier":"QUERYURL_CODE", "default": true},
-		{"label":"Include Hello User Function", "identifier":"HELLOUSER_CODE", "default": true}
+		{"label":"Include Sample Functions", "identifier":"EXAMPLE_CODE", "default": true}
 	    ]
 	}
     },

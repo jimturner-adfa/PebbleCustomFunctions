@@ -8,16 +8,10 @@ class BasicExtensions(
 
     override fun getFunctions(): Map<String, Function> =
         mapOf(
-		${% if REVERSE_CODE %}
-		    "reverse" to ReverseFunction(),
-		${% endif %}
-		${% if QUERYDB_CODE %}
-		    "queryDB" to QueryDbFunction(),
-		${% endif %}
-		${% if QUERYURL_CODE %}
-		    "queryURL" to QueryURLFunction(),
-		${% endif %}
-		${% if HELLOUSER_CODE %}
+		${% if EXAMPLE_CODE %}
+		    "reverse"   to ReverseFunction(),
+		    "queryDB"   to QueryDbFunction(),
+		    "queryURL"  to QueryURLFunction(),
 		    "helloUser" to HelloUserFunction()
 		${% endif %}
         )

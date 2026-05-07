@@ -8,18 +8,30 @@ import androidx.lifecycle.ViewModelProvider
 
 class PageViewModel : ViewModel() {
 
+    private var result = ""
     private val _index = MutableLiveData<Int>()
+    private val errorString = "Error:"
+    private val logFilename = "error_log.txt"
+    private val saveDir = "${{SAVE_LOCATION}}".replaceFirst("/storage/emulated/0", "/sdcard")
     val text: LiveData<String> = Transformations.map(_index) { input ->
+    ${% if EXAMPLE_CODE %}
     	when (input) {
-             1 -> "Hello ${{STUDENT_NAME}}"   //"${{ reverse ("Hello world from section: reverse") }}"
-             2 -> "${{ queryDB() }}"
-             3 ->
+             1 -> result = "${{ reverse ("Hello world from section: reverse") }}"
+             2 -> result = "${{ queryDB() }}"
+             3 -> result = 
 	       """
                ${{ queryURL("http://localhost:6174/PUCC/api/v1.0/student/0663864") | raw }}
                """.trimIndent()
-             else -> "Error"
+	     4 -> result = "Hello ${{STUDENT_NAME}}"
+      	     else -> result = "Error: Unknown Error"
    	}  
-}    
+	if(result.trim().startsWith(errorString)) {
+	    result = "An error occurred as follows:\n${result}\nIt will be logged in the file\n\t${saveDir}/${logFilename}";
+	}
+	${% endif %}
+	result
+}
+
 
     fun setIndex(index: Int) {
         _index.value = index
